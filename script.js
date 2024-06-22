@@ -4,8 +4,8 @@ let deletemodal = document.querySelector(".deletemodal");
 let input = document.querySelector("#input");
 let addButton = document.querySelector("#add-button");
 let Task = document.querySelector("#Task");
-let currentEditIndex = -1; // To store the index of the task being edited
-let currentDeleteIndex = -1; // To store the index of the task being deleted
+let currentEditIndex = -1; 
+let currentDeleteIndex = -1;
 let data = [];
 
 // Create Task
@@ -57,13 +57,13 @@ let closeModal = () => {
 };
 
 let editmodal = function (index) {
-  currentEditIndex = index; // Store the index of the task being edited
+  currentEditIndex = index;
   editInput.value = data[index].name;
   Editmodal.classList.remove("hidden");
 };
 
 let savepost = function () {
-  data[currentEditIndex].name = editInput.value; // Update the task name
+  data[currentEditIndex].name = editInput.value; 
   localStorage.setItem("data", JSON.stringify(data));
   createtask();
   closeModal();
@@ -71,13 +71,13 @@ let savepost = function () {
 
 // Delete Modal
 let DeleteModal = function (index) {
-  currentDeleteIndex = index; // Store the index of the task being deleted
+  currentDeleteIndex = index; 
   document.getElementById("deleteinput").innerText = data[index].name;
   deletemodal.classList.remove("hidden");
 };
 
 let deletepost = function () {
-  data.splice(currentDeleteIndex, 1); // Remove the task from the array
+  data.splice(currentDeleteIndex, 1); 
   localStorage.setItem("data", JSON.stringify(data));
   createtask();
   closeModal();
