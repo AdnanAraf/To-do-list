@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="flex flex-col gap-10 w-full max-w-md m-auto">
+      <div>
+        <h1 class="text-3xl mt-10 text-center">To-do App!</h1>
+        <div class="flex flex-col gap-12 items-center mt-8">
+          <input
+            class="outline-none w-full max-w-md shadow-sm border-b border-blue-400"
+            type="text"
+            id="input"
+            placeholder="Enter your task"
+          />
+
+          <button
+            id="add-button"
+            class="bg-blue-400 w-full shadow-lg font-medium px-4 py-3 rounded-lg"
+          >
+            Add Task
+          </button>
+        </div>
+      </div>
+      <!-- Task container -->
+      <div>
+        <div
+          id="box"
+          class="border-2 border-blue-400 rounded-lg p-7 overflow-y-auto"
+        >
+          <div id="Task" class="flex flex-col gap-5"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="hidden deletemodal">
+      <div
+        class="modal h-max absolute top-0 right-0 left-0 bottom-0 m-auto flex justify-center items-center"
+      >
+        <div class="bg-white h-max w-max px-6 rounded-lg">
+          <div class="flex justify-between py-5">
+            <div>
+              <img src="./Image/deletecolor.png" />
+            </div>
+            <div>
+              <img
+                class="cursor-pointer"
+                onclick="closeModal()"
+                id="close"
+                src="./Image/close.png"
+              />
+            </div>
+          </div>
+          <div>
+            <div class="flex flex-col gap-1">
+              <h1 class="text-[#101828] text-lg font-semibold">
+                Delete blog post
+              </h1>
+              <p class="text-gray-600 text-sm">
+                Are you sure you want to delete this
+                <span id="deleteinput"></span>? This action<br />
+                cannot be undone.
+              </p>
+            </div>
+            <div class="flex gap-3 py-5">
+              <button
+                onclick="closeModal()"
+                class="border-2 px-4.5 py-2.5 w-48 text-gray-700 rounded-lg border-gray-300 font-bold shadow-sm"
+              >
+                Cancel
+              </button>
+
+              <button
+                onclick="deletepost()"
+                class="w-48 px-4.5 py-2.5 bg-red-600 text-white rounded-lg font-semibold shadow-sm"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="hidden editmodal" id="editmodal">
+      <div
+        class="modal h-max absolute top-0 right-0 left-0 bottom-0 m-auto flex justify-center items-center"
+      >
+        <div class="bg-white h-max w-max px-6 rounded-lg">
+          <div class="flex justify-between py-5">
+            <div>
+              <img src="./Image/Edit.png" />
+            </div>
+            <div>
+              <img
+                class="cursor-pointer"
+                onclick="closeModal()"
+                id="close"
+                src="./Image/close.png"
+              />
+            </div>
+          </div>
+          <div>
+            <div class="flex flex-col gap-1">
+              <h1 class="text-[#101828] text-lg font-semibold">
+                Unsaved changes
+              </h1>
+              <p class="text-gray-600 text-sm">
+                Do you want to save or discard changes?
+              </p>
+              <div class="rounded-lg py-2">
+                <input
+                  class="border-2 w-full border-gray-300 outline-none"
+                  type="text"
+                  id="editinput"
+                />
+              </div>
+            </div>
+            <div class="flex gap-3 py-5">
+              <button
+                onclick="closeModal()"
+                class="border-2 px-4.5 py-2.5 w-48 text-gray-700 rounded-lg border-gray-300 font-bold shadow-sm"
+              >
+                Cancel
+              </button>
+
+              <button
+                onclick="savepost()"
+                class="w-48 px-4.5 py-2.5 bg-blue-600 text-white rounded-lg font-semibold shadow-sm"
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+<style>
+  #box {
+    height: 300px; 
+    overflow-y: auto;
+  }
+
+  #box::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  #box::-webkit-scrollbar-thumb {
+    background-color: #776d6d; 
+    border-radius: 6px; 
+  }
+
+  #box::-webkit-scrollbar-track {
+    background-color: #cbd5e0; 
+    border-radius: 6px; 
+  }
+  .modal {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .close:hover {
+    color: black;
+  }
+  .Editmodal {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+</style>

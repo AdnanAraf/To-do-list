@@ -1,0 +1,5 @@
+#flex-container {
+  display: flex;
+  gap: 12px;
+  justify-items: center;
+}
